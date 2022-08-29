@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Edit features with the Editor widget | Sample | ArcGIS API for JavaScript 4.24</title>
+<!--   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample for ArcGis Api for JS</title> -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.24/"></script>
+    <link rel="stylesheet" href="map.css">
+</head>
+<body>
+    <!-- //calling map library 
+    [esri.Basemap] 🛑 DEPRECATED - The topo basemap has entered mature support and is no longer being updated.
+	🛠️ Replacement: topo-vector
+    -->
+    <script>
+        //2D Map
+         let map1;
+         let mapView;
+        // require(["esri/Map", "esri/views/MapView","dojo/domReady!"],function(Map, MapView){
+        //  map1=new Map({basemap:"topo-vector"});
+        //  mapView=new MapView({container:"viewDiv",map:map1});
+        //  });
+
+
+         //3D Map
+        //  require(["esri/Map", "esri/views/SceneView","esri/widgets/BasemapToggle"],
+        //  function(Map, SceneView,BasemapToggle){
+        //  map1=new Map({"basemap":"topo-vector"});
+        //  mapView=new SceneView({container:"viewDiv",map:map1,center:[27.3086223643245,28.87744632402803],zoom:6});
+        //  let basemapToggle=new BasemapToggle({
+        //    view:mapView,
+        //    nextBasemap:"satellite"
+        // });
+        // mapView.ui.add(basemapToggle,"bottom-left");
+        //   }
+        //   );
+
+
+
+          //multi Scene  basemap
+        //   require(["esri/Map", "esri/views/SceneView","esri/widgets/BasemapToggle","esri/widgets/BasemapGallery"],
+        //  function(Map, SceneView,BasemapToggle,BasemapGallery){
+        //  map1=new Map({"basemap":"topo-vector"});
+        //  mapView=new SceneView({container:"viewDiv",map:map1,center:[27.3086223643245,28.87744632402803],zoom:6});
+        //  let basemapToggle=new BasemapToggle({
+        //    view:mapView,
+        //    nextBasemap:"satellite"
+        // });
+        // mapView.ui.add(basemapToggle,"bottom-left");
+
+
+        // let basemapGallery=new BasemapGallery({
+        //   view:mapView,
+        //   source:{
+        //     portal:{
+        //       url:"https://www.arcgis.com",
+        //       useVectorBasemaps:true
+        //     }
+        //   }
+        // });
+        // mapView.ui.add(basemapGallery,"top-right")
+        //   }
+        //   );
+
+//Feature services
+//https://services3.arcgis.com/GVgbJbqm8hXASVYi/ArcGIS/rest/services
+
+
+
+// require(["esri/Map", "esri/views/SceneView",
+// "esri/widgets/BasemapToggle","esri/widgets/BasemapGallery","esri/layers/FeatureLayer"],
+//          function(Map, SceneView,BasemapToggle,BasemapGallery,FeatureLayer){
+//          map1=new Map({"basemap":"topo-vector"});
+//          mapView=new SceneView({container:"viewDiv",map:map1,center:[-118.71511,34.09042],zoom:6});
+//          let basemapToggle=new BasemapToggle({
+//            view:mapView,
+//            nextBasemap:"satellite"
+//         });
+//         mapView.ui.add(basemapToggle,"bottom-left");
+
+
+//         let basemapGallery=new BasemapGallery({
+//           view:mapView,
+//           source:{
+//             portal:{
+//               url:"https://www.arcgis.com",
+//               useVectorBasemaps:true
+//             }
+//           }
+//         });
+//       //  mapView.ui.add(basemapGallery,"top-right")
+
+
+
+//       let flayer=new FeatureLayer({
+//         url:"https://services3.arcgis.com/GVgbJbqm8hXASVYi/ArcGIS/rest/services/Trails/FeatureServer/0"
+//       });
+
+//       map1.add(flayer);
+//           }
+//           );
+
+
+
+//ScaleBar with MapView
+
+require(["esri/Map", "esri/views/MapView",
+"esri/widgets/BasemapToggle","esri/widgets/BasemapGallery","esri/layers/FeatureLayer","esri/widgets/ScaleBar"],
+         function(Map, MapView,BasemapToggle,BasemapGallery,FeatureLayer,ScaleBar){
+         map1=new Map({"basemap":"topo-vector"});
+         mapView=new MapView({container:"viewDiv",map:map1,center:[-118.71511,34.09042],zoom:6});
+         let basemapToggle=new BasemapToggle({
+           view:mapView,
+           nextBasemap:"satellite"
+        });
+        mapView.ui.add(basemapToggle,"bottom-left");
+
+
+        let basemapGallery=new BasemapGallery({
+          view:mapView,
+          source:{
+            portal:{
+              url:"https://www.arcgis.com",
+              useVectorBasemaps:true
+            }
+          }
+        });
+      //  mapView.ui.add(basemapGallery,"top-right")
+
+
+
+      let flayer=new FeatureLayer({
+        url:"https://services3.arcgis.com/GVgbJbqm8hXASVYi/ArcGIS/rest/services/Trails/FeatureServer/0"
+      });
+
+      map1.add(flayer);
+
+      let sb=new ScaleBar({
+        view:mapView
+      });
+      mapView.ui.add(sb,"bottom-right")
+
+      let 
+          }
+          );
+
+    </script>
+    <div id="viewDiv"></div>
+</body>
+</html>

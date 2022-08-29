@@ -109,11 +109,12 @@
 
 
 
-//ScaleBar with MapView
+//ScaleBar with MapView  and Legend
 
 require(["esri/Map", "esri/views/MapView",
-"esri/widgets/BasemapToggle","esri/widgets/BasemapGallery","esri/layers/FeatureLayer","esri/widgets/ScaleBar"],
-         function(Map, MapView,BasemapToggle,BasemapGallery,FeatureLayer,ScaleBar){
+"esri/widgets/BasemapToggle","esri/widgets/BasemapGallery",
+"esri/layers/FeatureLayer","esri/widgets/ScaleBar","esri/widgets/Legend"],
+         function(Map, MapView,BasemapToggle,BasemapGallery,FeatureLayer,ScaleBar,Legend ){
          map1=new Map({"basemap":"topo-vector"});
          mapView=new MapView({container:"viewDiv",map:map1,center:[-118.71511,34.09042],zoom:6});
          let basemapToggle=new BasemapToggle({
@@ -147,7 +148,7 @@ require(["esri/Map", "esri/views/MapView",
       });
       mapView.ui.add(sb,"bottom-right")
 
-      let 
+      mapView.ui.add(new Legend({view:mapView}),"top-right");
           }
           );
 

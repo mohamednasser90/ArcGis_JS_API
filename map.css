@@ -16,3 +16,7 @@ body,
 .esri-editor .esri-item-list__scroller {
   max-height: 350px;
 }
+.esri-search{
+  position: absolute;
+  top: 90px;
+}

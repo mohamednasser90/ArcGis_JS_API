@@ -109,19 +109,19 @@
 
 
 
-//ScaleBar with MapView  and Legend
+//ScaleBar with MapView  and Legend and 
 
 require(["esri/Map", "esri/views/MapView",
 "esri/widgets/BasemapToggle","esri/widgets/BasemapGallery",
-"esri/layers/FeatureLayer","esri/widgets/ScaleBar","esri/widgets/Legend"],
-         function(Map, MapView,BasemapToggle,BasemapGallery,FeatureLayer,ScaleBar,Legend ){
+"esri/layers/FeatureLayer","esri/widgets/ScaleBar","esri/widgets/Legend","esri/widgets/Search"],
+         function(Map, MapView,BasemapToggle,BasemapGallery,FeatureLayer,ScaleBar,Legend,Search ){
          map1=new Map({"basemap":"topo-vector"});
          mapView=new MapView({container:"viewDiv",map:map1,center:[-118.71511,34.09042],zoom:6});
          let basemapToggle=new BasemapToggle({
            view:mapView,
            nextBasemap:"satellite"
         });
-        mapView.ui.add(basemapToggle,"bottom-left");
+        mapView.ui.add(basemapToggle,"top-right");
 
 
         let basemapGallery=new BasemapGallery({
@@ -148,7 +148,10 @@ require(["esri/Map", "esri/views/MapView",
       });
       mapView.ui.add(sb,"bottom-right")
 
-      mapView.ui.add(new Legend({view:mapView}),"top-right");
+      mapView.ui.add(new Legend({view:mapView}),"bottom-left");
+      mapView.ui.add(new Search({view:mapView},"top-left"));
+      // mapView.padding.right=320;
+      // mapView.padding.top=320;
           }
           );
 

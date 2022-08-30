@@ -71,6 +71,7 @@
 
 //Feature services
 //https://services3.arcgis.com/GVgbJbqm8hXASVYi/ArcGIS/rest/services
+//layer  https://services3.arcgis.com/GVgbJbqm8hXASVYi/ArcGIS/rest/services/Trails/FeatureServer/0
 
 
 
@@ -110,12 +111,12 @@
 
 
 //ScaleBar with MapView  and Legend and 
-
+// add multi layers
 require(["esri/Map", "esri/views/MapView",
 "esri/widgets/BasemapToggle","esri/widgets/BasemapGallery",
 "esri/layers/FeatureLayer","esri/widgets/ScaleBar","esri/widgets/Legend","esri/widgets/Search"],
          function(Map, MapView,BasemapToggle,BasemapGallery,FeatureLayer,ScaleBar,Legend,Search ){
-         map1=new Map({"basemap":"topo-vector"});
+         map1=new Map({"basemap":"osm"});//topo-vector
          mapView=new MapView({container:"viewDiv",map:map1,center:[-118.71511,34.09042],zoom:6});
          let basemapToggle=new BasemapToggle({
            view:mapView,
@@ -136,12 +137,26 @@ require(["esri/Map", "esri/views/MapView",
       //  mapView.ui.add(basemapGallery,"top-right")
 
 
-
+//Trails Layer
       let flayer=new FeatureLayer({
         url:"https://services3.arcgis.com/GVgbJbqm8hXASVYi/ArcGIS/rest/services/Trails/FeatureServer/0"
       });
 
-      map1.add(flayer);
+      map1.add(flayer,2);
+//https://services3.arcgis.com/GVgbJbqm8hXASVYi/ArcGIS/rest/services/Trailheads/FeatureServer/0 
+let trailHead=new FeatureLayer({
+  url:"https://services3.arcgis.com/GVgbJbqm8hXASVYi/ArcGIS/rest/services/Trailheads/FeatureServer/0"
+});
+map1.add(trailHead,1);
+
+//https://services3.arcgis.com/GVgbJbqm8hXASVYi/ArcGIS/rest/services/Parks_and_Open_Space/FeatureServer/0
+let park_OpenSpace=new FeatureLayer({
+  url:"https://services3.arcgis.com/GVgbJbqm8hXASVYi/ArcGIS/rest/services/Parks_and_Open_Space/FeatureServer/0"
+});
+map1.add(park_OpenSpace,0);
+
+
+
 
       let sb=new ScaleBar({
         view:mapView
